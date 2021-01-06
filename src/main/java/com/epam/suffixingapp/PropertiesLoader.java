@@ -1,25 +1,23 @@
 package com.epam.suffixingapp;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
-import java.util.Scanner;
 
 public class PropertiesLoader {
-    private static final String FILE_PATH_PROMPT = "Please, enter the configuration file full name: ";
-    private static final Scanner SCANNER = new Scanner(System.in);
+    private static final String FILE_NOT_FOUND_FORMATTED = "File '%s' not found%n";
 
-    public String getFilePath() {
-        System.out.println(FILE_PATH_PROMPT);
-        return SCANNER.next();
+    private PropertiesLoader() {
     }
-    public Properties readProperties(String path) {
+
+    public static Properties loadProperties(String path) {
         Properties properties = new Properties();
-        try (FileInputStream fis = new FileInputStream(path)) {
-            properties.load(fis);
+        try (Reader reader = Files.newBufferedReader(Paths.get(path))) {
+            properties.load(reader);
         } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("There is no properties file \"" + path + "\"");
+            System.err.printf(FILE_NOT_FOUND_FORMATTED, path);
             System.exit(1);
         }
         return properties;
