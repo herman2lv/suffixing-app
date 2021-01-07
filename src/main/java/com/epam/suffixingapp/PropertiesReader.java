@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import static com.epam.suffixingapp.UserMessages.PROPERTY_IS_NOT_CLEAR;
+
 public class PropertiesReader {
-    private static final String PROPERTY_IS_NOT_CLEAR =
-            "Properties file is not configured properly";
     private static final String PROPERTY_FILES = "files";
     private static final String PROPERTY_SUFFIX = "suffix";
     private static final String FILES_PATHS_SPLIT_REGEX = ":";

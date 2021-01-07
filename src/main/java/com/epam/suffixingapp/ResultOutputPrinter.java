@@ -2,24 +2,21 @@ package com.epam.suffixingapp;
 
 import java.nio.file.Path;
 import java.util.Map;
-import java.util.Set;
+
+import static com.epam.suffixingapp.UserMessages.FAILED_TO_RENAME;
 
 public class ResultOutputPrinter {
     private static final String OUTPUT_FORMAT = "Renamed: %s -> %s%n";
-    private static final String FAILED_TO_RENAME = "[FAIL] Renamed: NONE";
 
     private ResultOutputPrinter() {
     }
 
     public static void printResultOfRenamingToStdout(Map<Path, Path> files) {
-        Set<Map.Entry<Path, Path>> setOfFiles = files.entrySet();
-        for (Map.Entry<Path, Path> element : setOfFiles) {
-            System.out.printf(OUTPUT_FORMAT, element.getKey().getFileName(),
-                    element.getValue().getFileName());
-        }
-        if (setOfFiles.isEmpty()) {
+        if (files.isEmpty()) {
             System.out.println(FAILED_TO_RENAME);
             System.exit(1);
         }
+        files.forEach((s1, s2) -> System.out.printf(OUTPUT_FORMAT,
+                s1.getFileName(), s2.getFileName()));
     }
 }

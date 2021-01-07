@@ -14,9 +14,8 @@ public class Renamer {
 
     public static Map<Path, Path> addSuffix(List<Path> paths, String suffix) {
         Map<Path, Path> successfullyRenamedFiles = new HashMap<>();
-        Path renamedFile;
         for (Path fileToRename : paths) {
-            renamedFile = Paths.get(fileToRename.toString() + suffix);
+            Path renamedFile = Paths.get(fileToRename.toString() + suffix);
             try {
                 Files.move(fileToRename, renamedFile);
                 successfullyRenamedFiles.put(fileToRename, renamedFile);

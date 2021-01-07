@@ -9,12 +9,11 @@ public class FileChecker {
     }
 
     public static boolean checkFilesExistence(List<Path> paths) {
-        boolean allFilesExist = true;
         for (Path path : paths) {
             if (Files.notExists(path) || Files.isDirectory(path)) {
-                allFilesExist = false;
+                return false;
             }
         }
-        return allFilesExist;
+        return true;
     }
 }

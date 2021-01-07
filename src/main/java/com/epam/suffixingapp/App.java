@@ -5,12 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-public class App {
-    private static final String NO_ARGUMENT_MESSAGE =
-            "There is no any command line argument. Expected configuration file address";
-    private static final String NOT_ALL_FILES_MESSAGE =
-            "Not all files from configuration file exist";
+import static com.epam.suffixingapp.UserMessages.NOT_ALL_FILES_MESSAGE;
+import static com.epam.suffixingapp.UserMessages.NO_ARGUMENT_MESSAGE;
 
+public class App {
     private App() {
     }
 
