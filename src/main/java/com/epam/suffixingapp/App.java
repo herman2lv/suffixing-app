@@ -2,7 +2,6 @@ package com.epam.suffixingapp;
 
 import java.nio.file.Path;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import static com.epam.suffixingapp.UserMessages.NOT_ALL_FILES_MESSAGE;
@@ -23,8 +22,8 @@ public class App {
             System.err.println(NOT_ALL_FILES_MESSAGE);
             System.exit(1);
         }
-        Map<Path, Path> renamingResult = Renamer.addSuffix(paths, suffix);
-        ResultOutputPrinter.printResultOfRenamingToStdout(renamingResult);
+        List<RenamingResult> renamingResults = Renamer.addSuffix(paths, suffix);
+        ResultOutputPrinter.printResultOfRenamingToStdout(renamingResults);
     }
 
     private static void checkArgs(String[] args) {

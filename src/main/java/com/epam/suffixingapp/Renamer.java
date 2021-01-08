@@ -4,21 +4,20 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Renamer {
     private Renamer() {
     }
 
-    public static Map<Path, Path> addSuffix(List<Path> paths, String suffix) {
-        Map<Path, Path> successfullyRenamedFiles = new HashMap<>();
+    public static List<RenamingResult> addSuffix(List<Path> paths, String suffix) {
+        List<RenamingResult> successfullyRenamedFiles = new ArrayList<>();
         for (Path fileToRename : paths) {
             Path renamedFile = Paths.get(fileToRename.toString() + suffix);
             try {
                 Files.move(fileToRename, renamedFile);
-                successfullyRenamedFiles.put(fileToRename, renamedFile);
+                successfullyRenamedFiles.add(new RenamingResult(fileToRename, renamedFile));
             } catch (IOException e) {
                 e.printStackTrace();
             }
