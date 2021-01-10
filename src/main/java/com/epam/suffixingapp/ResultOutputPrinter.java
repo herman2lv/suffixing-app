@@ -11,10 +11,9 @@ public class ResultOutputPrinter {
 
     public static void printResultOfRenamingToStdout(List<RenamingResult> files) {
         if (files.isEmpty()) {
-            System.out.println(FAILED_TO_RENAME);
-            System.exit(1);
+            throw new RuntimeException(FAILED_TO_RENAME);
         }
-        files.forEach((s) -> System.out.printf(RESULT_OUTPUT_FORMAT,
+        files.forEach(s -> System.out.printf(RESULT_OUTPUT_FORMAT,
                 s.getOldPath().getFileName(), s.getNewPath().getFileName()));
     }
 }

@@ -18,8 +18,7 @@ public class PropertiesLoader {
             properties.load(reader);
         } catch (IOException e) {
             System.err.printf(FILE_NOT_FOUND_FORMATTED, path);
-            e.printStackTrace();
-            System.exit(1);
+            throw new RuntimeException(e);
         }
         return properties;
     }

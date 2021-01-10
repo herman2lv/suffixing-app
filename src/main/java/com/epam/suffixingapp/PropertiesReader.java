@@ -38,8 +38,7 @@ public class PropertiesReader {
 
     private void checkProperty(String property) {
         if (property == null || property.isEmpty()) {
-            System.err.println(PROPERTY_IS_NOT_CLEAR);
-            System.exit(1);
+            throw new RuntimeException(PROPERTY_IS_NOT_CLEAR);
         }
     }
 }

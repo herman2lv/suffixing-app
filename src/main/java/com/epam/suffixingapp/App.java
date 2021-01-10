@@ -28,8 +28,7 @@ public class App {
 
     private static void checkArgs(String[] args) {
         if (args.length < 1) {
-            System.err.println(NO_ARGUMENT_MESSAGE);
-            System.exit(1);
+            throw new RuntimeException(NO_ARGUMENT_MESSAGE);
         }
     }
 }
