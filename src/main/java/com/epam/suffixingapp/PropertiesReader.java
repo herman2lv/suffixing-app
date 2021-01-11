@@ -1,5 +1,8 @@
 package com.epam.suffixingapp;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -9,6 +12,8 @@ import java.util.Properties;
 import static com.epam.suffixingapp.UserMessages.PROPERTY_IS_NOT_CLEAR;
 
 public class PropertiesReader {
+    private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesReader.class);
+
     private static final String PROPERTY_FILES = "files";
     private static final String PROPERTY_SUFFIX = "suffix";
     private static final String FILES_PATHS_SPLIT_REGEX = ":";
@@ -38,6 +43,7 @@ public class PropertiesReader {
 
     private void checkProperty(String property) {
         if (property == null || property.isEmpty()) {
+            LOGGER.error(PROPERTY_IS_NOT_CLEAR);
             throw new RuntimeException(PROPERTY_IS_NOT_CLEAR);
         }
     }
