@@ -1,5 +1,8 @@
 package com.epam.suffixingapp;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Renamer {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Renamer.class);
+
     private Renamer() {
     }
 
@@ -18,7 +23,10 @@ public class Renamer {
             try {
                 Files.move(fileToRename, renamedFile);
                 successfullyRenamedFiles.add(new RenamingResult(fileToRename, renamedFile));
+                LOGGER.info("File {} was renamed to {}",
+                        fileToRename.getFileName(), renamedFile.getFileName());
             } catch (IOException e) {
+                LOGGER.error(e.getMessage(), e);
                 e.printStackTrace();
             }
         }
