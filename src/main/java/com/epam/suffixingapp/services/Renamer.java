@@ -1,5 +1,7 @@
-package com.epam.suffixingapp;
+package com.epam.suffixingapp.services;
 
+import com.epam.suffixingapp.beans.RenamingConfigs;
+import com.epam.suffixingapp.beans.RenamingResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,20 +12,22 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.epam.suffixingapp.messages.UserMessages.LOG_FILE_RENAMED_FORMATTED;
+
 public class Renamer {
     private static final Logger LOGGER = LoggerFactory.getLogger(Renamer.class);
 
     private Renamer() {
     }
 
-    public static List<RenamingResult> addSuffix(List<Path> paths, String suffix) {
+    public static List<RenamingResult> addSuffix(RenamingConfigs configs) {
         List<RenamingResult> successfullyRenamedFiles = new ArrayList<>();
-        for (Path fileToRename : paths) {
-            Path renamedFile = Paths.get(fileToRename.toString() + suffix);
+        for (Path fileToRename : configs.getFiles()) {
+            Path renamedFile = Paths.get(fileToRename.toString() + configs.getSuffix());
             try {
                 Files.move(fileToRename, renamedFile);
                 successfullyRenamedFiles.add(new RenamingResult(fileToRename, renamedFile));
-                LOGGER.info("File {} was renamed to {}",
+                LOGGER.info(LOG_FILE_RENAMED_FORMATTED,
                         fileToRename.getFileName(), renamedFile.getFileName());
             } catch (IOException e) {
                 LOGGER.error(e.getMessage(), e);

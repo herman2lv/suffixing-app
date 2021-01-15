@@ -1,4 +1,4 @@
-package com.epam.suffixingapp;
+package com.epam.suffixingapp.services;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

@@ -1,4 +1,6 @@
-package com.epam.suffixingapp;
+package com.epam.suffixingapp.beans;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.nio.file.Path;
 
@@ -11,10 +13,12 @@ public class RenamingResult {
         this.newPath = newPath;
     }
 
+    @JsonProperty("oldName")
     public Path getOldPath() {
         return oldPath;
     }
 
+    @JsonProperty("newName")
     public Path getNewPath() {
         return newPath;
     }
