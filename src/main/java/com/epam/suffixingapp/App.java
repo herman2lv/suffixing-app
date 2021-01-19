@@ -4,15 +4,13 @@ import com.epam.suffixingapp.beans.RenamingConfigs;
 import com.epam.suffixingapp.beans.RenamingResult;
 import com.epam.suffixingapp.configgetters.ConfigGetter;
 import com.epam.suffixingapp.configgetters.ConfigGetterFactory;
-import com.epam.suffixingapp.output.ResultOutputFormatter;
-import com.epam.suffixingapp.output.ResultOutputPrinter;
+import com.epam.suffixingapp.output.ResultOutputManager;
 import com.epam.suffixingapp.services.FileChecker;
 import com.epam.suffixingapp.services.Renamer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 import static com.epam.suffixingapp.messages.UserMessages.LOG_APP_FINISHED;
@@ -22,8 +20,6 @@ import static com.epam.suffixingapp.messages.UserMessages.NO_ARGUMENT_MESSAGE;
 
 public class App {
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
-    public static final String OUTPUT_JSON_FILE_PATH =
-            "/home/herman/IdeaProjects/suffixing-app/target/renamingOutput.json";
 
     private App() {
     }
@@ -36,14 +32,7 @@ public class App {
         RenamingConfigs configs = configGetter.getConfigs(configFilePath);
         checkFiles(configs.getFiles());
         List<RenamingResult> renamingResults = Renamer.addSuffix(configs);
-        String jsonFormattedOutput =
-                ResultOutputFormatter.formatResultOfRenamingToJsonString(renamingResults,
-                        configFilePath);
-        String stdFormattedOutput =
-                ResultOutputFormatter.saveResultOfRenamingToString(renamingResults);
-        ResultOutputPrinter.printResultOfRenamingToStdout(stdFormattedOutput);
-        ResultOutputPrinter.saveResultOfRenamingToFile(
-                Paths.get(OUTPUT_JSON_FILE_PATH), jsonFormattedOutput);
+        ResultOutputManager.outputResult(renamingResults, configFilePath, configs.getOutput());
         LOGGER.debug(LOG_APP_FINISHED);
     }
 

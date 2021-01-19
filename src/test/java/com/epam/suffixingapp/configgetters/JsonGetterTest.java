@@ -20,6 +20,7 @@ public class JsonGetterTest {
     private static final String FILE_1 = "/file/to/rename/1";
     private static final String FILE_2 = "/file/to/rename/2";
     private static final String SUFFIX = ".txt";
+    private static final String OUTPUT = "json";
     private final RenamingConfigs configs = new RenamingConfigs();
 
     @Before
@@ -29,6 +30,7 @@ public class JsonGetterTest {
         filesToRename.add(Paths.get(FILE_1));
         filesToRename.add(Paths.get(FILE_2));
         configs.setFiles(filesToRename);
+        configs.setOutput(OUTPUT);
         String testConfigContent = new ObjectMapper().writeValueAsString(configs);
         Path path = Paths.get(TEST_RESOURCES_PATH + TEST_CONFIG_JSON);
         Files.writeString(path, testConfigContent, StandardOpenOption.WRITE);
@@ -41,6 +43,7 @@ public class JsonGetterTest {
                 jsonGetter.getConfigs(TEST_RESOURCES_PATH + TEST_CONFIG_JSON);
         Assert.assertEquals(configs.getSuffix(), configsFromFile.getSuffix());
         Assert.assertEquals(configs.getFiles(), configsFromFile.getFiles());
+        Assert.assertEquals(configs.getOutput(), configsFromFile.getOutput());
     }
 
     @Test(expected = RuntimeException.class)

@@ -21,7 +21,6 @@ public class ConfigGetterFactory {
             case XML -> new XmlGetter();
             case JSON -> new JsonGetter();
             case PROPERTIES -> new PropertiesGetter();
-            default -> null;
         };
     }
 

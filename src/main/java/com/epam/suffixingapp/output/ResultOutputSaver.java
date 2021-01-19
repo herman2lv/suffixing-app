@@ -8,20 +8,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
-import static com.epam.suffixingapp.messages.UserMessages.LOG_PRINTED_TO_STDOUT;
+public class ResultOutputSaver {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ResultOutputSaver.class);
 
-public class ResultOutputPrinter {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ResultOutputPrinter.class);
-
-    private ResultOutputPrinter() {
+    private ResultOutputSaver() {
     }
 
-    public static void printResultOfRenamingToStdout(String resultOutput) {
-        System.out.println(resultOutput);
-        LOGGER.info(LOG_PRINTED_TO_STDOUT);
-    }
-
-    public static void saveResultOfRenamingToFile(Path file, String resultOutput) {
+    public static void saveToFile(Path file, String resultOutput) {
         try {
             Files.deleteIfExists(file);
             Files.createFile(file);

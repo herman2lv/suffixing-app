@@ -17,8 +17,11 @@ public class UserMessages {
             "Renaming results have been printed to the standard output stream";
     public static final String LOG_FILE_RENAMED_FORMATTED = "File {} was renamed to {}";
     public static final String LOG_APP_FINISHED = "App has been finished correctly";
+    public static final String LOG_XML_FORMATTING_FAILED =
+            "Result output set can't be marshalled to XML string";
     public static final String LOG_JSON_FORMATTING_FAILED =
             "Result output set can't be marshalled to JSON string";
+    public static final String CONFIG_FILE_PATH_FORMATTED = "Config file path: %s%n";
 
     private UserMessages() {
     }

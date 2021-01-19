@@ -6,6 +6,7 @@ import java.util.List;
 public class RenamingConfigs {
     private String suffix;
     private List<Path> files;
+    private String output;
 
     public String getSuffix() {
         return suffix;
@@ -21,5 +22,13 @@ public class RenamingConfigs {
 
     public void setFiles(List<Path> files) {
         this.files = files;
+    }
+
+    public String getOutput() {
+        return output;
+    }
+
+    public void setOutput(String output) {
+        this.output = output;
     }
 }
