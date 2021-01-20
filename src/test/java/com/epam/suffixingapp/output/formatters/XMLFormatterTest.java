@@ -18,6 +18,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.epam.suffixingapp.messages.UserMessages.LOG_XML_FORMATTING_FAILED;
 import static com.epam.suffixingapp.output.formatters.XMLFormatter.CONFIG_FILE_PATH;
 import static com.epam.suffixingapp.output.formatters.XMLFormatter.RENAMED_FILES;
 
@@ -36,6 +37,15 @@ public class XMLFormatterTest {private final static String CONFIG_PATH = "/confi
         String output = new XMLFormatter().format(files, CONFIG_PATH);
         Assert.assertEquals(CONFIG_PATH, getConfigPath(output));
         Assert.assertEquals(FILE_TO_RENAME + RENAMED_FILE, getRenamedFiles(output));
+    }
+
+    @Test
+    public void formatExceptionTest()
+            throws IOException, SAXException, ParserConfigurationException {
+        List<RenamingResult> list = new ArrayList<>();
+        list.add(null);
+        String output = new XMLFormatter().format(list, CONFIG_PATH);
+        Assert.assertEquals(LOG_XML_FORMATTING_FAILED, output);
     }
 
     private String getConfigPath(String xmlString)

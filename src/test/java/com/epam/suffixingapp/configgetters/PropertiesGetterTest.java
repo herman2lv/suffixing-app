@@ -19,6 +19,7 @@ public class PropertiesGetterTest {
     private static final String SUFFIX_VALUE = ".txt";
     private static final String OUTPUT_KEY = "output=";
     private static final String OUTPUT_VALUE = "json";
+    private static final String TEST_CONFIG_NOT_PROPER = "testConfig.xml";
 
     @Before
     public void setUp() throws Exception {
@@ -42,5 +43,14 @@ public class PropertiesGetterTest {
     public void getConfigsFromNotExistingFile() {
         String configFilePath = TEST_RESOURCES_PATH + "NoSuchFile";
         new PropertiesGetter().getConfigs(configFilePath);
+    }
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void getNotProperlyConfiguredFile() {
+        String configFilePath = TEST_RESOURCES_PATH + TEST_CONFIG_NOT_PROPER;
+        new PropertiesGetter().getConfigs(configFilePath);
+
+
     }
 }

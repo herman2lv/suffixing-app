@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.epam.suffixingapp.messages.UserMessages.CONFIG_FILE_PATH_FORMATTED;
+import static com.epam.suffixingapp.messages.UserMessages.FAILED_TO_RENAME;
 import static com.epam.suffixingapp.messages.UserMessages.RESULT_OUTPUT_FORMAT;
 
 public class SimpleFormatterTest {
@@ -31,5 +32,11 @@ public class SimpleFormatterTest {
                 files.get(0).getOldPath().getFileName(),
                 files.get(0).getNewPath().getFileName());
         Assert.assertEquals(correctOutput, outputToTest);
+    }
+
+    @Test
+    public void formatEmptyFilesListTest() {
+        String outputToTest = new SimpleFormatter().format(new ArrayList<>(), CONFIG_PATH);
+        Assert.assertEquals(FAILED_TO_RENAME, outputToTest);
     }
 }
