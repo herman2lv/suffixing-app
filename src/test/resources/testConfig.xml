@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <suffix>.test-suf</suffix>
+    <files>
+        <file>/home/herman/IdeaProjects/suffixing-app/files/1</file>
+    </files>
+    <output>xml-test</output>
+</config>

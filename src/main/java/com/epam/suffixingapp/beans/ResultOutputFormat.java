@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ResultOutputFormat {
     private final String configFilePath;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private final Date timeOfOperation;
     private final List<RenamingResult> renamedFiles;
 

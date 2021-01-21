@@ -22,6 +22,7 @@ public class PropertiesGetter implements ConfigGetter {
     private static final String PROPERTY_FILES = "files";
     private static final String PROPERTY_SUFFIX = "suffix";
     private static final String FILES_PATHS_SPLIT_REGEX = ":";
+    public static final String PROPERTY_OUTPUT = "output";
 
     @Override
     public RenamingConfigs getConfigs(String path) {
@@ -29,6 +30,7 @@ public class PropertiesGetter implements ConfigGetter {
         RenamingConfigs configs = new RenamingConfigs();
         configs.setSuffix(getSuffix(properties));
         configs.setFiles(getFiles(properties));
+        configs.setOutput(getOutput(properties));
         return configs;
     }
 
@@ -61,6 +63,12 @@ public class PropertiesGetter implements ConfigGetter {
         String suffix = properties.getProperty(PROPERTY_SUFFIX);
         checkProperty(suffix);
         return suffix;
+    }
+
+    private String getOutput(Properties properties) {
+        String output = properties.getProperty(PROPERTY_OUTPUT);
+        checkProperty(output);
+        return output;
     }
 
     private void checkProperty(String property) {

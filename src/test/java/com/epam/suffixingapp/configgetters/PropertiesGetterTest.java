@@ -17,10 +17,15 @@ public class PropertiesGetterTest {
     private static final String FILES_VALUE = "/file/to/rename";
     private static final String SUFFIX_KEY = "suffix=";
     private static final String SUFFIX_VALUE = ".txt";
+    private static final String OUTPUT_KEY = "output=";
+    private static final String OUTPUT_VALUE = "json";
+    private static final String TEST_CONFIG_NOT_PROPER = "testConfig.xml";
 
     @Before
     public void setUp() throws Exception {
-        String testConfigContent = FILES_KEY + FILES_VALUE + "\n" + SUFFIX_KEY + SUFFIX_VALUE;
+        String testConfigContent = FILES_KEY + FILES_VALUE + "\n"
+                                   + SUFFIX_KEY + SUFFIX_VALUE + "\n"
+                                   + OUTPUT_KEY + OUTPUT_VALUE + "\n";
         Files.writeString(Paths.get(TEST_RESOURCES_PATH + TEST_CONFIG_PROPERTIES),
                 testConfigContent, StandardOpenOption.WRITE);
     }
@@ -38,5 +43,14 @@ public class PropertiesGetterTest {
     public void getConfigsFromNotExistingFile() {
         String configFilePath = TEST_RESOURCES_PATH + "NoSuchFile";
         new PropertiesGetter().getConfigs(configFilePath);
+    }
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void getNotProperlyConfiguredFile() {
+        String configFilePath = TEST_RESOURCES_PATH + TEST_CONFIG_NOT_PROPER;
+        new PropertiesGetter().getConfigs(configFilePath);
+
+
     }
 }
