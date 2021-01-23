@@ -1,9 +1,0 @@
-{
-  "suffix": ".json-suf",
-  "files": [
-    "/home/herman/IdeaProjects/suffixing-app/files/1",
-    "/home/herman/IdeaProjects/suffixing-app/files/2",
-    "/home/herman/IdeaProjects/suffixing-app/files/3"
-  ],
-  "output": "json"
-}

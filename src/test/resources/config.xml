@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <suffix>.xml-suf</suffix>
+    <files>
+        <file>/home/herman/IdeaProjects/suffixing-app/src/test/resources/1</file>
+        <file>/home/herman/IdeaProjects/suffixing-app/src/test/resources/2</file>
+        <file>/home/herman/IdeaProjects/suffixing-app/src/test/resources/3</file>
+    </files>
+    <output>xml</output>
+</config>
