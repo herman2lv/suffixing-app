@@ -31,7 +31,6 @@ public class Renamer {
                         fileToRename.getFileName(), renamedFile.getFileName());
             } catch (IOException e) {
                 LOGGER.error(e.getMessage(), e);
-                e.printStackTrace();
             }
         }
         return successfullyRenamedFiles;

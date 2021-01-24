@@ -45,7 +45,6 @@ public class XMLFormatter implements ResultOutputFormatter {
             return sw.toString();
         } catch (XMLStreamException | NullPointerException e) {
             LOGGER.error(LOG_XML_FORMATTING_FAILED, e);
-            e.printStackTrace();
             return LOG_XML_FORMATTING_FAILED;
         }
     }

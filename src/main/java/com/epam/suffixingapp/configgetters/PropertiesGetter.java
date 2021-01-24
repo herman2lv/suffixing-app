@@ -40,7 +40,6 @@ public class PropertiesGetter implements ConfigGetter {
             properties.load(reader);
             LOGGER.info(LOG_PROPS_LOADED);
         } catch (IOException e) {
-            System.err.printf(FILE_NOT_FOUND_FORMATTED, path);
             LOGGER.error(e.getMessage(), e);
             throw new IllegalArgumentException(e);
         }

@@ -18,7 +18,6 @@ public class JsonGetter implements ConfigGetter {
             return new ObjectMapper().readValue(reader, RenamingConfigs.class);
         } catch (IOException e) {
             LOGGER.error(e.getMessage(), e);
-            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }

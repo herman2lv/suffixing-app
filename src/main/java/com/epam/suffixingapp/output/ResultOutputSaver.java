@@ -21,7 +21,6 @@ public class ResultOutputSaver {
             Files.writeString(file, resultOutput, StandardOpenOption.WRITE);
         } catch (IOException e) {
             LOGGER.error(e.getMessage(), e);
-            e.printStackTrace();
         }
     }
 }

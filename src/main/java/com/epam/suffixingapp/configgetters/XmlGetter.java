@@ -44,7 +44,6 @@ public class XmlGetter implements ConfigGetter {
             return configs;
         } catch (XMLStreamException | FileNotFoundException e) {
             LOGGER.error(e.getMessage(), e);
-            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }

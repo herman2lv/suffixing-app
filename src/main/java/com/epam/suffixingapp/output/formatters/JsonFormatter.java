@@ -22,7 +22,6 @@ public class JsonFormatter implements ResultOutputFormatter {
             return objectMapper.writeValueAsString(outputFormat);
         } catch (JsonProcessingException e) {
             LOGGER.error(LOG_JSON_FORMATTING_FAILED, e);
-            e.printStackTrace();
             return LOG_JSON_FORMATTING_FAILED;
         }
     }
