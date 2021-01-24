@@ -15,6 +15,10 @@ public class UserMessages {
     public static final String LOG_PROPS_LOADED = "Properties file has been loaded successfully";
     public static final String LOG_PRINTED_TO_STDOUT =
             "Renaming results have been printed to the standard output stream";
+    public static final String LOG_SAVED_TO_JSON =
+            "Renaming results have been saved to JSON file";
+    public static final String LOG_SAVED_TO_XML =
+            "Renaming results have been printed to XML file";
     public static final String LOG_FILE_RENAMED_FORMATTED = "File {} was renamed to {}";
     public static final String LOG_APP_FINISHED = "App has been finished correctly";
     public static final String LOG_XML_FORMATTING_FAILED =

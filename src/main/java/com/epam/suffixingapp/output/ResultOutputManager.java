@@ -10,8 +10,13 @@ import org.slf4j.LoggerFactory;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static com.epam.suffixingapp.messages.UserMessages.LOG_PRINTED_TO_STDOUT;
+import static com.epam.suffixingapp.messages.UserMessages.LOG_SAVED_TO_JSON;
+import static com.epam.suffixingapp.messages.UserMessages.LOG_SAVED_TO_XML;
+
 public class ResultOutputManager {
     private static final Logger CONSOLE_OUTPUT = LoggerFactory.getLogger("resultOutput");
+    private static final Logger LOGGER = LoggerFactory.getLogger(ResultOutputManager.class);
     private static final String OUTPUT_DIR_PATH =
             "/home/herman/IdeaProjects/suffixing-app/target/";
     private static final String OUTPUT_XML_FILE = "renamingOutput.xml";
@@ -27,11 +32,20 @@ public class ResultOutputManager {
                 ResultOutputFormatterFactory.createFormatter(outputFileType);
         String output = formatter.format(files, configFilePath);
         switch (outputFileType) {
-            case JSON -> ResultOutputSaver
-                    .saveToFile(Paths.get(OUTPUT_DIR_PATH, OUTPUT_JSON_FILE), output);
-            case XML -> ResultOutputSaver
-                    .saveToFile(Paths.get(OUTPUT_DIR_PATH, OUTPUT_XML_FILE), output);
-            default -> CONSOLE_OUTPUT.info(output);
+            case JSON -> {
+                ResultOutputSaver
+                        .saveToFile(Paths.get(OUTPUT_DIR_PATH, OUTPUT_JSON_FILE), output);
+                LOGGER.info(LOG_SAVED_TO_JSON);
+            }
+            case XML -> {
+                ResultOutputSaver
+                        .saveToFile(Paths.get(OUTPUT_DIR_PATH, OUTPUT_XML_FILE), output);
+                LOGGER.info(LOG_SAVED_TO_XML);
+            }
+            default -> {
+                CONSOLE_OUTPUT.info(output);
+                LOGGER.info(LOG_PRINTED_TO_STDOUT);
+            }
         }
     }
 
