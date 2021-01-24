@@ -37,7 +37,6 @@ public class XmlGetter implements ConfigGetter {
                         case "suffix" -> configs.setSuffix(reader.getElementText());
                         case "output" -> configs.setOutput(reader.getElementText());
                         case "file" -> files.add(Paths.get(reader.getElementText()));
-                        default -> { }
                     }
                 }
             }
