@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import static com.epam.suffixingapp.messages.UserMessages.FILE_NOT_FOUND_FORMATTED;
 import static com.epam.suffixingapp.messages.UserMessages.LOG_PROPS_LOADED;
 import static com.epam.suffixingapp.messages.UserMessages.PROPERTY_IS_NOT_CLEAR;
 
